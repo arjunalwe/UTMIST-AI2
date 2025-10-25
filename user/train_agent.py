@@ -550,6 +550,7 @@ def gen_reward_manager():
         #'head_to_opponent': RewTerm(func=head_to_opponent, weight=0.05),
         'penalize_attack_reward': RewTerm(func=in_state_reward, weight=-0.04, params={'desired_state': AttackState}),
         'holding_more_than_3_keys': RewTerm(func=holding_more_than_3_keys, weight=-0.01),
+        
         #'taunt_reward': RewTerm(func=in_state_reward, weight=0.2, params={'desired_state': TauntState}),
     }
     signal_subscriptions = {
@@ -569,13 +570,13 @@ The main function runs training. You can change configurations such as the Agent
 '''
 if __name__ == '__main__':
     # Create agent
-    my_agent = CustomAgent(sb3_class=PPO, extractor=MLPExtractor)
+    #my_agent = CustomAgent(sb3_class=PPO, extractor=MLPExtractor)
 
     # Start here if you want to train from scratch. e.g:
-    #my_agent = RecurrentPPOAgent()
+    my_agent = RecurrentPPOAgent()
 
     # Start here if you want to train from a specific timestep. e.g:
-    #my_agent = RecurrentPPOAgent(file_path='checkpoints/experiment_3/rl_model_120006_steps.zip')
+ #   my_agent = RecurrentPPOAgent(file_path='checkpoints/experiment_3/rl_model_120006_steps.zip')
 
     # Reward manager
     reward_manager = gen_reward_manager()
